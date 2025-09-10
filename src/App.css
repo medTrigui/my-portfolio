@@ -1,0 +1,111 @@
+/* App Component Styles */
+.app {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  transition: all var(--transition-normal);
+}
+
+/* Main content styling */
+main {
+  position: relative;
+}
+
+/* Section styling */
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  scroll-margin-top: 80px; /* Account for fixed header */
+}
+
+/* Special handling for hero section */
+section#home {
+  min-height: 100vh;
+}
+
+/* Other sections with more flexible height */
+section:not(#home) {
+  min-height: auto;
+  padding: var(--spacing-2xl) 0;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+  border: none;
+  color: var(--text-accent);
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  transition: all var(--transition-fast);
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Theme variations */
+.app.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-accent: #0f172a;
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+}
+
+/* Loading states and animations */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-primary);
+  border-top: 3px solid var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 60px;
+  }
+  
+  .scroll-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section:not(#home) {
+    padding: var(--spacing-xl) 0;
+  }
+}
